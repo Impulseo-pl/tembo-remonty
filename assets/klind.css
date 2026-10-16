@@ -1,0 +1,200 @@
+/* Skórka „premium kremowo-grafitowa” (wzór: klindworthroofing.com, zlecenie Szymona 16.10.2026).
+   Ładowana PO styles.css - nadpisuje paletę, typografię, nagłówek i stopkę na wszystkich podstronach. */
+:root{
+  --k-cream:#EDE9E2; --k-cream-2:#E4DED4; --k-dark:#24262B; --k-dark-2:#2E3036;
+  --k-bronze:#AC9376; --k-bronze-d:#6B5944; --k-ink:#24262B; --k-soft:#5B5D63;
+  --k-serif:'Gloock',Georgia,'Times New Roman',serif; --k-sans:'Jost',system-ui,sans-serif;
+  --accent:#AC9376; --accent-d:#6B5944; --accent-soft:rgba(172,147,118,.14);
+  --paper:#EDE9E2; --paper-2:#E4DED4; --paper-3:#DAD3C7; --ink:#24262B; --ink-soft:#4A4C52; --muted:#66625C; --line:rgba(36,38,43,.14);
+}
+html{scroll-behavior:smooth}
+body.k{background:var(--k-cream);color:var(--k-ink);font-family:var(--k-sans);font-weight:400}
+body.k h1,body.k h2,body.k h3{font-family:var(--k-serif);font-weight:400;letter-spacing:0;color:inherit}
+body.k .eyebrow{font-family:var(--k-sans);color:var(--k-bronze-d);letter-spacing:.08em;text-transform:uppercase;font-weight:400}
+body.k .eyebrow::before{display:none}
+.k-wrap{width:min(1200px,100% - 48px);margin-inline:auto}
+
+/* ---------- Przyciski: pigułki z cienką ramką ---------- */
+.k-btn,body.k .btn{display:inline-flex;align-items:center;gap:.6em;padding:.95em 2.4em;border-radius:999px;border:1px solid var(--k-bronze);background:transparent;color:inherit;font:400 1.02rem/1 var(--k-sans);text-decoration:none;transition:background .3s,color .3s,border-color .3s;box-shadow:none}
+.k-btn:hover,body.k .btn:hover{background:var(--k-bronze);color:#fff;border-color:var(--k-bronze);transform:none}
+body.k .btn-accent,body.k .btn-light{background:transparent;color:inherit}
+.k-arr{color:var(--k-bronze);transition:transform .3s}
+a:hover .k-arr{transform:translateX(4px)}
+
+/* ---------- Nagłówek: logo / pigułka menu / telefon ---------- */
+.k-nav{position:fixed;inset:0 0 auto 0;z-index:80;pointer-events:none}
+.k-nav-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:26px 40px}
+.k-nav a,.k-nav button{pointer-events:auto}
+.k-brand{justify-self:start;display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--k-ink);transition:opacity .35s}
+.k-brand img{height:76px;width:auto;display:block}
+.k-brand span{font:400 1.35rem/1 var(--k-serif)}
+.k-pill{justify-self:center;width:140px;height:56px;border-radius:999px;border:0;background:#fff;cursor:pointer;position:relative;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.k-pill i{position:absolute;left:50%;top:50%;width:30px;height:1.5px;margin:-.75px 0 0 -15px;background:var(--k-ink);transition:transform .35s}
+.k-pill i:first-child{transform:translateY(-4px)} .k-pill i:last-child{transform:translateY(4px)}
+.k-open .k-pill i:first-child{transform:rotate(45deg)} .k-open .k-pill i:last-child{transform:rotate(-45deg)}
+.k-tel{justify-self:end;background:rgba(237,233,226,.92);padding:12px 18px;border-radius:999px;color:var(--k-ink);text-decoration:none;font:500 1.2rem/1 var(--k-sans);display:flex;gap:.5em;align-items:center;transition:opacity .35s}
+.k-scrolled .k-brand,.k-scrolled .k-tel{opacity:0;pointer-events:none}
+.k-menu{position:fixed;inset:0;z-index:70;background:var(--k-dark);color:var(--k-cream);display:none;place-items:center}
+.k-open .k-menu{display:grid;animation:kfade .4s ease}
+@keyframes kfade{from{opacity:0}to{opacity:1}}
+.k-menu ul{list-style:none;margin:0;padding:0;text-align:center}
+.k-menu li a{display:block;font:400 clamp(2.4rem,6vw,4.6rem)/1.15 var(--k-serif);text-transform:uppercase;color:var(--k-cream);text-decoration:none;transition:color .3s}
+.k-menu li a:hover,.k-menu li a[aria-current]{color:var(--k-bronze)}
+.k-menu .k-menu-tel{display:inline-block;margin-top:2.2rem;color:var(--k-bronze);font:400 1.2rem/1 var(--k-sans);text-decoration:none}
+.k-open .k-brand,.k-open .k-tel{opacity:1;pointer-events:auto}
+.k-open .k-tel{color:var(--k-cream)}
+.k-open .k-brand img{background:#fff;border-radius:8px;padding:4px}
+
+/* ---------- HERO: tekst + zdjęcie pocięte na skośne odłamki ---------- */
+.k-hero{position:relative;min-height:100svh;background:var(--k-cream);overflow:hidden;display:flex;align-items:center}
+.k-hero-copy{position:relative;z-index:2;width:min(1200px,100% - 48px);margin-inline:auto;padding:150px 0 90px}
+.k-hero-copy>*{max-width:570px}
+.k-kicker{display:block;color:var(--k-bronze-d);font:400 1.1rem/1 var(--k-sans);letter-spacing:.04em;text-transform:uppercase;margin-bottom:28px}
+.k-hero h1{font:400 clamp(2.9rem,5.6vw,4.9rem)/.98 var(--k-serif);text-transform:uppercase;margin:0 0 30px}
+.k-hero p{font-size:1.2rem;line-height:1.6;color:var(--k-ink);margin:0 0 38px}
+.k-hero-art{position:absolute;top:0;right:0;bottom:0;width:50%;z-index:1}
+.k-shard{position:absolute;inset:0;background:url(../img/hero.jpg) 30% center/cover no-repeat}
+.k-shard.s1{clip-path:polygon(0 52%,24% 22%,56% 60%,30% 100%,0 100%)}
+.k-shard.s2{clip-path:polygon(29% 15%,44% 0,92% 0,52% 46%)}
+.k-shard.s4{clip-path:polygon(60% 50%,100% 6%,100% 44%,76% 70%)}
+.k-shard.s5{clip-path:polygon(40% 100%,64% 74%,82% 92%,100% 72%,100% 100%)}
+.k-shard.s6{clip-path:polygon(60% 56%,72% 72%,62% 84%,50% 70%)}
+
+/* ---------- Sekcje ciemne ---------- */
+.k-dark{background:var(--k-dark);color:var(--k-cream)}
+.k-dark a{color:var(--k-cream)}
+.k-what{padding:150px 0 120px}
+.k-what-grid{display:grid;grid-template-columns:1fr 2.1fr;gap:40px}
+.k-vlabel{justify-self:center;writing-mode:vertical-rl;transform:rotate(180deg);color:var(--k-bronze);letter-spacing:.08em;text-transform:uppercase;font-size:1.15rem;align-self:start}
+.k-what-txt{font:300 clamp(1.35rem,2.2vw,1.85rem)/1.55 var(--k-sans);margin:0}
+.k-duo{display:grid;grid-template-columns:1.75fr 1fr;gap:132px;margin-top:110px;align-items:start}
+.k-card{text-decoration:none;display:block}
+.k-card figure{margin:0;overflow:hidden}
+.k-card img{width:100%;display:block;aspect-ratio:688/580;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.k-duo .k-card:last-child img{aspect-ratio:380/258}
+.k-card:hover img{transform:scale(1.04)}
+.k-cap{display:block;margin-top:34px;font-size:1.2rem}
+.k-cap small{display:block;font-size:1.1rem;color:rgba(237,233,226,.62);margin-top:6px}
+
+/* ---------- Gigantyczne słowo ---------- */
+.k-giant{font:400 clamp(2.4rem,16vw,16.5rem)/.9 var(--k-serif);text-transform:uppercase;text-align:center;color:var(--k-cream);margin:0;padding:110px 0 90px;letter-spacing:-.01em}
+.k-giant.on-light{color:var(--k-dark)}
+
+/* ---------- Realizacje: karty nasuwające się na siebie ---------- */
+.k-work{padding:0 40px 130px}
+.k-stack{position:relative}
+.k-slide{position:sticky;top:52px;height:min(78vh,760px);margin-bottom:60px;overflow:hidden;background:#111}
+.k-slide img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.78)}
+.k-slide h3{position:absolute;left:80px;top:70px;margin:0;font:400 clamp(2.6rem,5vw,4.6rem)/1 var(--k-serif);text-transform:uppercase;color:var(--k-cream)}
+.k-slide p{position:absolute;left:82px;top:calc(70px + clamp(2.6rem,5vw,4.6rem) + 18px);margin:0;max-width:34ch;color:rgba(237,233,226,.85);font-size:1.1rem}
+.k-center{text-align:center}
+
+/* ---------- Usługi: karuzela na jasnym ---------- */
+.k-svc{padding:140px 0 130px;background:var(--k-cream)}
+.k-svc h2{font:400 clamp(1.9rem,3vw,2.6rem)/1.22 var(--k-serif);text-align:center;max-width:22ch;margin:0 auto 70px}
+.k-carousel{display:grid;grid-template-columns:1fr 56px;gap:36px;align-items:start;padding-left:max(24px,calc((100vw - 1200px)/2))}
+.k-track{display:flex;gap:70px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px}
+.k-track::-webkit-scrollbar{display:none}
+.k-item{flex:0 0 min(340px,78vw);scroll-snap-align:start;text-decoration:none;color:var(--k-ink)}
+.k-item img{width:100%;aspect-ratio:340/196;object-fit:cover;display:block}
+.k-item h3{font:400 1.12rem/1.3 var(--k-sans);margin:26px 0 10px}
+.k-item p{margin:0;color:var(--k-soft);line-height:1.6;font-size:1rem}
+.k-arrows{display:flex;flex-direction:column;gap:14px;padding-top:0;position:relative;z-index:2;margin-right:24px}
+.k-arrows button{width:46px;height:46px;border-radius:50%;border:1px solid var(--k-bronze);background:transparent;color:var(--k-ink);cursor:pointer;font-size:1.1rem;transition:background .3s,color .3s}
+.k-arrows button:hover{background:var(--k-bronze);color:#fff}
+.k-carousel{grid-template-columns:1fr auto}
+
+/* ---------- Opinia ---------- */
+.k-quote{padding:140px 0}
+.k-quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+.k-quote blockquote{margin:0;font:400 clamp(1.6rem,2.6vw,2.3rem)/1.3 var(--k-serif)}
+.k-quote cite{display:block;margin-top:34px;font:400 1rem/1.4 var(--k-sans);font-style:normal;color:rgba(237,233,226,.62)}
+.k-quote cite a{color:var(--k-bronze)}
+.k-quote img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+
+/* ---------- Zaufanie: plakietki ---------- */
+.k-trust{padding-bottom:140px}
+.k-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:34px 46px;list-style:none;margin:0;padding:0}
+.k-badges li{width:150px;height:150px;border-radius:50%;border:1px solid rgba(237,233,226,.35);display:grid;place-items:center;text-align:center;padding:18px;font:400 .98rem/1.3 var(--k-sans);color:var(--k-cream)}
+.k-badges li b{display:block;font:400 1.45rem/1.1 var(--k-serif);color:var(--k-bronze);margin-bottom:6px}
+
+/* ---------- Ostatnie wezwanie z numerem ---------- */
+.k-call{padding:0 0 120px;text-align:center}
+body.k .k-stk{margin:0;height:min(70vh,640px)}
+.k-call .k-kicker{margin:90px 0 26px;text-align:center;color:var(--k-bronze)}
+.k-bignum{display:block;font:400 clamp(2.8rem,7.4vw,6.8rem)/1 var(--k-serif);color:var(--k-cream);text-decoration:none;margin-bottom:44px;white-space:nowrap}
+
+/* ---------- Stopka jasna ---------- */
+.k-foot{background:var(--k-cream);color:var(--k-ink);padding:90px 0 40px}
+.k-foot a{color:var(--k-ink);text-decoration:none}
+.k-foot a:hover{color:var(--k-bronze-d)}
+.k-foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:40px;font-size:1rem;line-height:1.85}
+.k-foot h4{font:400 .9rem/1 var(--k-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--k-bronze-d);margin:0 0 14px}
+.k-foot ul{list-style:none;margin:0;padding:0}
+.k-soc small{display:block;color:var(--k-soft);font-size:.9rem;line-height:1.2;margin-bottom:10px}
+.k-foot-bot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:80px;padding-top:28px;border-top:1px solid var(--line);font-size:.92rem;color:var(--k-soft)}
+.k-foot-bot img{height:74px;width:auto;display:block}
+.k-foot-bot a{color:var(--k-soft);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Podstrony: nagłówek w stylu hero ---------- */
+body.k .pagehead{position:relative;min-height:78svh;background:var(--k-cream);color:var(--k-ink);display:flex;align-items:center;overflow:hidden;padding:150px 0 80px}
+body.k .pagehead::before,body.k .pagehead::after{display:none}
+body.k .pagehead>img{position:absolute;top:0;right:0;left:auto;width:50%;height:100%;object-fit:cover;opacity:1;filter:none;clip-path:polygon(34% 0,100% 0,100% 100%,0 100%);transform:none}
+body.k .pagehead .wrap{position:relative;z-index:2;width:min(1200px,100% - 48px)}
+body.k .pagehead .wrap>*{max-width:520px}
+body.k .pagehead h1{text-shadow:none;font:400 clamp(2.6rem,5vw,4.4rem)/1 var(--k-serif);text-transform:uppercase;color:var(--k-ink);margin:18px 0 24px}
+body.k .pagehead p{text-shadow:none;color:var(--k-ink);font-size:1.15rem;line-height:1.6;opacity:1}
+body.k .pagehead .eyebrow{color:var(--k-bronze-d)}
+body.k main>section:not(.pagehead):not(.cta):not(.k-dark){background:var(--k-cream)}
+body.k main>section.k-dark{background:var(--k-dark);color:var(--k-cream)}
+body.k .svc-row h3,body.k .split-copy h2,body.k .contact-grid h2{font-family:var(--k-serif);font-weight:400}
+body.k .svc-row .num{color:var(--k-bronze-d);font-family:var(--k-sans)}
+body.k .cta{background:var(--k-dark);color:var(--k-cream)}
+body.k .cta h2{font:400 clamp(2rem,4vw,3.4rem)/1.1 var(--k-serif);color:var(--k-cream)}
+body.k .cta p{color:rgba(237,233,226,.75)}
+body.k .cta .eyebrow{color:var(--k-bronze)}
+body.k .cta .btn{color:var(--k-cream)}
+body.k .form{background:#F5F2EC;border:1px solid var(--line);box-shadow:none}
+body.k .form input,body.k .form textarea{background:#fff}
+body.k .form .btn{color:var(--k-ink)}
+body.k .sticky-call{font-family:var(--k-sans)}
+
+/* ---------- Responsywność ---------- */
+@media (max-width:980px){
+  .k-nav-inner{padding:18px 20px}
+  .k-pill{width:96px;height:46px}
+  .k-tel{font-size:1rem}
+  .k-tel{font-size:.86rem;padding:9px 12px}
+  .k-tel .k-arr{display:none}
+  .k-hero{flex-direction:column;align-items:stretch;min-height:0}
+  .k-hero-copy{padding:44px 0 64px}
+  .k-hero-art{position:relative;width:100%;height:62vw;max-height:520px;margin-top:84px}
+  .k-what-grid,.k-duo,.k-quote-grid{grid-template-columns:1fr}
+  .k-vlabel{writing-mode:horizontal-tb;transform:none;justify-self:start}
+  .k-duo{gap:56px;margin-top:60px}
+  .k-what,.k-svc,.k-quote{padding:90px 0}
+  .k-work{padding:0 16px 90px}
+  .k-slide{height:68vh;top:84px}
+  .k-slide h3{left:28px;top:36px}
+  .k-slide p{left:30px;right:24px;top:auto;bottom:34px}
+  .k-carousel{grid-template-columns:1fr;padding-left:24px}
+  .k-arrows{flex-direction:row;order:2}
+  .k-foot-grid{grid-template-columns:1fr 1fr}
+  body.k .pagehead{flex-direction:column;align-items:stretch;padding:120px 0 0;min-height:0}
+  body.k .pagehead>img{position:relative;width:100%;height:56vw;clip-path:polygon(0 18%,100% 0,100% 100%,0 100%);order:2;margin-top:40px}
+}
+@media (max-width:560px){
+  .k-brand img{height:52px}
+  .k-hero h1{font-size:10vw}
+  body.k .pagehead h1{font-size:10vw}
+  .k-pill{width:72px}
+  .k-nav-inner{padding:14px 14px}
+  .k-tel{gap:0}
+  .k-bignum{font-size:2.6rem}
+  .k-badges li{width:132px;height:132px;font-size:.88rem}
+  .k-foot-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.k-card img,.k-menu{transition:none}html{scroll-behavior:auto}}
+/* Tło pasa (position:fixed) włączamy dopiero, gdy sekcja jest blisko ekranu - inaczej leży „pod” hero. */
+.k-stk .stk-bg{visibility:hidden}
+.k-stk.k-vis .stk-bg{visibility:visible}
